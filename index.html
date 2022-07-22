@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Karla:wght@800&display=swap" rel="stylesheet">
+<script defer src="js/app.js"></script>
     <title>Password generator</title>
   </head>
   <body>
@@ -15,11 +16,12 @@
       <section class="content">
          <h1>Generate a </br> random password</h1>
          <p>Never use an insecure password again.</p>
-         <button>Generate passwords</button>
+         <button onclick="renderPass()" class="generate-button">Generate passwords</button>
       </section>
       <section class="results">
-        <div class="password">>nfJjy!dDvR&ial</div>
-        <div class="password">eg>xWij@veiPUwK</div>
+        <div class="password first-result">
+</div>
+        <div class="password second-result"></div>
       </section>
     </main>
   </body>

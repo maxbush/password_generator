@@ -58,11 +58,14 @@ button {
 
 .results {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  /* justify-content: center; */
 }
 
 .password {
-  width: 13.1875em;
+  min-width: 13.1875em;
+  min-height: 2.1em;
   background-color: #273549;
   border-radius: 6px;
   text-align: center;
@@ -71,11 +74,7 @@ button {
   color: #55f991;
 }
 
-.password + .password {
-  margin-left: 1.5em;
-}
-
-@media (max-width: 540px) {
+@media (max-width: 550px) {
   html {
     font-size: 14px;
   }
@@ -88,17 +87,13 @@ button {
     width: 85%;
     margin: auto;
   }
-  .password + .password {
-    margin-left: 1em;
+  .password {
+    width: 100%;
   }
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   html {
     font-size: 12px;
   }
-
-  .password + .password {
-    margin-left: 0.5em;
-  }
-}
+} */
