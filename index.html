@@ -16,12 +16,32 @@
       <section class="content">
          <h1>Generate a </br> random password</h1>
          <p>Never use an insecure password again.</p>
-         <button onclick="renderPass()" class="generate-button">Generate passwords</button>
+         
+         <form action="">
+          <p class="error"></p>
+          <div class="row">
+              <input type="checkbox" id="pass-letters">
+              <label for="pass-letters"> Letters (A-z) </label>
+              <input type="checkbox" id="pass-numbers">
+              <label for="pass-numbers"> Numbers (0-9) </label>
+              <input type="checkbox" id="pass-char">
+              <label for="pass-char"> Special (/~*)</label>
+          </div>
+          <div class="row">
+            
+            <label for="pass-length">Password length <span class="length-err"></span>:
+              <input type="number" min=4 max="30" id="pass-length" placeholder="15">
+            </label>
+            <button class="generate-button">Generate passwords</button>
+          </div>
+        </form>
       </section>
       <section class="results">
+        <p class="results-info">Click to copy:</p>
         <div class="password first-result">
-</div>
-        <div class="password second-result"></div>
+        </div>
+        <div class="password second-result">
+        </div>
       </section>
     </main>
   </body>

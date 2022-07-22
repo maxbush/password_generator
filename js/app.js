@@ -2,21 +2,76 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 "/"];
 
 const generateButton = document.querySelector('.generate-button');
-console.log(generateButton)
-let firstResult = document.querySelector('.first-result')
-console.log(firstResult)
+const passLetters = document.querySelector('#pass-letters');
+const passNumbers = document.querySelector('#pass-numbers');
+let lettersInPass = true;
+let numbersInPass = true;
+let charInPass = true;
+const errorMsg = document.querySelector('.error');
+const lengthErr = document.querySelector('.length-err');
+const passChar = document.querySelector('#pass-char');
+const firstResult = document.querySelector('.first-result');
 const secondResult = document.querySelector('.second-result')
-console.log(secondResult)
+
+
+passLetters.addEventListener('click', e => {
+   lettersInPass ? lettersInPass = false : lettersInPass = true;  
+})
+passNumbers.addEventListener('click', e => {
+   numbersInPass ? numbersInPass = false : numbersInPass = true;
+})
+passChar.addEventListener('click', e => {
+   charInPass ? charInPass = false : charInPass = true;
+})
+
+generateButton.addEventListener('click', e => {
+   e.preventDefault();
+   renderPass();
+})
+
+firstResult.addEventListener('click', e=> {
+   navigator.clipboard.writeText(firstResult.innerText);
+})
+secondResult.addEventListener('click', e=> {
+   navigator.clipboard.writeText(secondResult.innerText);
+})
+
 
 const renderPass =() => {
-   firstResult.innerText = generatePass();
-   secondResult.innerText = generatePass();
+   let passLength = document.querySelector('#pass-length').value || 15
+   if (passLength < 4 || passLength > 20) {
+      lengthErr.innerText = "from 4 to 20";
+      return
+   }
+   let selectedCharTypes=[]
+   if (lettersInPass) {
+      for (let i = 0; i < characters.indexOf('0'); i++) {
+         selectedCharTypes.push(characters[i]);
+      }
+   }
+   if (numbersInPass) {
+      for (let i = characters.indexOf('0'); i <= characters.indexOf('9'); i++) {
+         selectedCharTypes.push(characters[i]);
+      }
+   }
+   if (charInPass) {
+      for (let i = characters.indexOf('9') + 1; i < characters.length; i++) {
+         selectedCharTypes.push(characters[i]);
+      }
+   }
+   if (!charInPass && !numbersInPass && !lettersInPass) {
+      errorMsg.innerText = "Please, select type of character below:"
+      return
+   }
+   firstResult.innerText = generatePass(passLength, selectedCharTypes);
+   secondResult.innerText = generatePass(passLength, selectedCharTypes);
 }
 
-const generatePass =() => {
+
+const generatePass =(passLength, arr) => {
    let result = [];
-   for (let i = 0; i < 15; i++) {
-      result.push(characters[Math.floor(Math.random() * characters.length)])
+   for (let i = 0; i < passLength; i++) {
+      result.push(arr[Math.floor(Math.random() * arr.length)]);
    }
    return result.reduce((previousValue, currentValue) => (previousValue + '' + currentValue));
 }
