@@ -41,7 +41,7 @@ h1::first-line {
 
 p {
   font-size: 1.25rem;
-  margin: 0.5em 0 5em;
+  margin: 0.5em 0 8em;
   color: #d5d4d8;
 }
 
@@ -49,7 +49,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  /* align-items: center; */
 }
 
 .error {
@@ -62,6 +61,7 @@ form {
   flex-wrap: wrap;
   gap: 1.3em;
   align-items: center;
+  justify-content: space-between;
 }
 
 .row + .row {
@@ -79,9 +79,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 [type="checkbox"] + label {
-  padding: 0.3em 0.5em;
+  padding: 0.3em 0.7em;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   user-select: none;
 }
 
@@ -123,19 +123,11 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5em;
-  margin: auto;
-}
-
-.results-info {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8em;
-  flex-basis: 1;
-  width: 100%;
+  justify-content: space-between;
 }
 
 .password {
-  min-width: 13.1875em;
+  min-width: 13em;
   min-height: 2.1em;
   background-color: #273549;
   border-radius: 6px;
@@ -143,9 +135,17 @@ button {
   line-height: 2em;
   font-weight: 500;
   color: #55f991;
-  position: relative;
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+.password:hover::before {
+  content: "Click to copy";
+  position: absolute;
+  top: -2em;
+  color: white;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 550px) {
@@ -163,5 +163,19 @@ button {
   }
   .password {
     width: 100%;
+  }
+
+  .row {
+    gap: 1em;
+    justify-content: start;
+  }
+
+  [type="checkbox"] + label {
+    padding: 0.3em 0.5em;
+    font-size: 0.9rem;
+  }
+
+  p {
+    margin: 0.5em 0 5em;
   }
 }
